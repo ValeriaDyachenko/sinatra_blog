@@ -1,0 +1,13 @@
+<ul>
+<% @posts.each do |post| %>
+ <li >
+   <h1 class="t-align">   
+   	<%=h post.title %>
+   <a href="/posts/<%= post.id %>/delete" title="Удалить файл" class="btn btn-success home-link">Delete</a>
+   <a href="/posts/<%= post.id %>/edit" class="btn btn-success home-link">Edit</a>   
+   <a href="/posts/<%= post.id %>" class="btn btn-success home-link"> Show</a>
+   </h1>    	
+ </li>
+ <hr>
+<% end %>
+</ul>

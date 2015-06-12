@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinatra Blog</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- стили ко всем страницам -->
+    <style>
+      body {
+        padding-top: 75px;
+        width: 100%;
+        text-align: center;
+      }      
+      .container_header {
+       width: 70%;       
+      }
+      .container_blog{
+        width: 70%;    
+      }
+      .navbar-header{
+        width: 20%
+      }
+      li{
+        list-style-type:none;
+      }
+      ul{
+        margin: 0;
+        padding: 0;
+      }
+      .home-link{
+          float: right; 
+          margin: 0 5px             
+      }
+      p{
+        text-indent:20px;
+        text-align: left;
+      }
+      .t-align{
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+  <!-- шапка сайта -->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container container_header">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">Sinatra Blog</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="/">Blog</a></li>
+            <li><a href="/posts/create">New Post</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- контейнер с информацией -->
+    <div class="container container_blog">
+      <% if flash[:notice] %>
+        <p class="alert alert-success"><%= flash[:notice] %>
+      <% end %>
+      <% if flash[:error] %>
+        <p class="alert alert-warning"><%= flash[:error] %>
+      <% end %>
+      <%= yield %>
+    </div>
+
+    <!-- подключение jquery, bootstrap -->
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+    <script>
+    //** removes alerts after 2 seconds */
+    window.setTimeout(function() {
+        $(".alert").fadeTo(1000, 0).slideUp(500, function(){
+            $(this).remove();
+        });
+    }, 500);
+    </script>
+  </body>
+</html>

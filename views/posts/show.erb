@@ -1,0 +1,8 @@
+<div class="block-center">
+	<h1><%=h @post.title %></h1>
+	<a href="/" class="btn btn-success">Back to Blog</a>
+	<a href="/posts/<%= @post.id %>/edit" class="btn btn-success">Edit</a>
+	<a href="/posts/<%= @post.id %>/delete" title="Удалить файл" class="btn btn-success">Delete</a>		
+</div>
+<br>
+<p><%=h @post.body %></p>
